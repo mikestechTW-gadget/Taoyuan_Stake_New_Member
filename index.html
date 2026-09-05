@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>桃園支聯會｜一年內新成員聖餐聚會出席 Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --bg:#f6f5f2; --card:#fff; --text:#1f2933; --muted:#667085; --border:#e6e2dc;
+  --accent:#c96d1a; --accent-soft:#fff3e6; --shadow:0 10px 30px rgba(31,41,51,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;background:radial-gradient(circle at top left,#fff7ed 0,#f6f5f2 38%,#f4f6f8 100%);color:var(--text);line-height:1.55}
+.page{max-width:1240px;margin:0 auto;padding:38px 22px 60px}
+.hero{background:linear-gradient(135deg,#fff 0%,#fff8ef 100%);border:1px solid var(--border);border-radius:24px;padding:32px;box-shadow:var(--shadow);margin-bottom:24px}
+.eyebrow{display:inline-flex;padding:6px 12px;border-radius:999px;color:#9a4f0a;background:var(--accent-soft);font-size:13px;font-weight:800;margin-bottom:12px}
+h1{margin:0 0 10px;font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;line-height:1.12}
+.subtitle{margin:0;color:var(--muted);font-size:16px}
+.month-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.month-card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 5px 18px rgba(31,41,51,.05);transition:.18s ease}
+.month-card:hover{transform:translateY(-2px);border-color:#efc39c;box-shadow:0 12px 28px rgba(31,41,51,.09)}
+.month-head{display:flex;justify-content:space-between;align-items:center}
+.month-name{font-size:24px;font-weight:850} .arrow{font-size:26px;color:var(--accent)}
+.month-period{color:var(--muted);font-size:13px;margin-top:2px}
+.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.metric-row div{background:#faf9f7;border-radius:12px;padding:12px}
+.metric-row span{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
+.metric-row strong{font-size:22px}
+.panel{background:#fff;border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:var(--shadow);margin-bottom:22px}
+.panel h2{font-size:24px;margin:0 0 6px} .panel-note{color:var(--muted);font-size:13px;margin:0 0 18px}
+.chart-wrap{height:370px;position:relative}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f8f5f0;color:#475467;text-align:left;padding:11px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid #efede9;white-space:nowrap}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.callout{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.callout div{border:1px solid var(--border);background:#fffaf4;border-radius:16px;padding:16px}
+.callout span{display:block;color:var(--muted);font-size:12px} .callout strong{display:block;font-size:24px;margin-top:5px}
+.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:24px}
+@media(max-width:900px){.dual-grid,.month-grid{grid-template-columns:1fr}.callout{grid-template-columns:1fr}}
+@media(max-width:600px){.page{padding:20px 12px 36px}.hero,.panel{padding:18px}.metric-row{grid-template-columns:1fr}.chart-wrap{height:300px}}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="hero">
+  <div class="eyebrow">桃園支聯會｜2026 新成員出席追蹤</div>
+  <h1>一年內新成員聖餐聚會出席 Dashboard</h1>
+  <p class="subtitle">首頁看長期趨勢；點選月份即可進入該月完整獨立報表。統計口徑：包含「1年的成員」，排除「1年1個月」以上與空白年資。</p>
+
+  <div class="month-grid">
+    
+      <a class="month-card" href="months/2026-05.html">
+        <div class="month-head"><span class="month-name">五月</span><span class="arrow">→</span></div>
+        <div class="month-period">05-03 ～ 05-31</div>
+        <div class="metric-row">
+          <div><span>一年內新成員</span><strong>93</strong></div>
+          <div><span>平均每週出席</span><strong>41.0</strong></div>
+          <div><span>平均出席率</span><strong>44.1%</strong></div>
+        </div>
+      </a>
+      <a class="month-card" href="months/2026-06.html">
+        <div class="month-head"><span class="month-name">六月</span><span class="arrow">→</span></div>
+        <div class="month-period">06-07 ～ 06-28</div>
+        <div class="metric-row">
+          <div><span>一年內新成員</span><strong>99</strong></div>
+          <div><span>平均每週出席</span><strong>49.3</strong></div>
+          <div><span>平均出席率</span><strong>49.7%</strong></div>
+        </div>
+      </a>
+      <a class="month-card" href="months/2026-07.html">
+        <div class="month-head"><span class="month-name">七月</span><span class="arrow">→</span></div>
+        <div class="month-period">07-05 ～ 07-26</div>
+        <div class="metric-row">
+          <div><span>一年內新成員</span><strong>98</strong></div>
+          <div><span>平均每週出席</span><strong>44.3</strong></div>
+          <div><span>平均出席率</span><strong>45.2%</strong></div>
+        </div>
+      </a>
+      <a class="month-card" href="months/2026-08.html">
+        <div class="month-head"><span class="month-name">八月</span><span class="arrow">→</span></div>
+        <div class="month-period">08-02 ～ 08-30</div>
+        <div class="metric-row">
+          <div><span>一年內新成員</span><strong>97</strong></div>
+          <div><span>平均每週出席</span><strong>35.8</strong></div>
+          <div><span>平均出席率</span><strong>36.9%</strong></div>
+        </div>
+      </a>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>長期整體趨勢</h2>
+  <p class="panel-note">五月至八月：一年內新成員總數、平均每週出席與平均出席率。</p>
+  <div class="chart-wrap"><canvas id="overallChart"></canvas></div>
+</section>
+
+<section class="dual-grid">
+  <section class="panel">
+    <h2>新成員總數趨勢</h2>
+    <p class="panel-note">各月六支會一年內新成員名單總數。</p>
+    <div class="chart-wrap" style="height:300px"><canvas id="memberChart"></canvas></div>
+  </section>
+  <section class="panel">
+    <h2>平均出席率趨勢</h2>
+    <p class="panel-note">以每月平均每週出席 ÷ 當月一年內新成員總數計算。</p>
+    <div class="chart-wrap" style="height:300px"><canvas id="rateChart"></canvas></div>
+  </section>
+</section>
+
+<section class="panel">
+  <h2>各支會跨月比較</h2>
+  <p class="panel-note">左半為一年內新成員數；右半為平均出席率，可快速辨識各支會的長期變化。</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">支會</th>
+          <th colspan="4" class="num">一年內新成員數</th>
+          <th colspan="4" class="num">平均出席率</th>
+        </tr>
+        <tr>
+          <th class="num">五月</th><th class="num">六月</th><th class="num">七月</th><th class="num">八月</th>
+          <th class="num">五月</th><th class="num">六月</th><th class="num">七月</th><th class="num">八月</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><strong>中壢支會</strong></td>
+        <td class="num">20</td><td class="num">20</td><td class="num">19</td><td class="num">17</td>
+        <td class="num">30.0%</td><td class="num">41.3%</td><td class="num">42.1%</td><td class="num">23.5%</td>
+      </tr>
+      <tr>
+        <td><strong>八德支會</strong></td>
+        <td class="num">15</td><td class="num">19</td><td class="num">18</td><td class="num">21</td>
+        <td class="num">57.3%</td><td class="num">57.9%</td><td class="num">45.8%</td><td class="num">57.1%</td>
+      </tr>
+      <tr>
+        <td><strong>桃園支會</strong></td>
+        <td class="num">14</td><td class="num">16</td><td class="num">17</td><td class="num">15</td>
+        <td class="num">48.6%</td><td class="num">54.7%</td><td class="num">58.8%</td><td class="num">49.3%</td>
+      </tr>
+      <tr>
+        <td><strong>蘆竹支會</strong></td>
+        <td class="num">12</td><td class="num">14</td><td class="num">13</td><td class="num">13</td>
+        <td class="num">46.7%</td><td class="num">58.9%</td><td class="num">50.0%</td><td class="num">23.1%</td>
+      </tr>
+      <tr>
+        <td><strong>龍潭支會</strong></td>
+        <td class="num">10</td><td class="num">10</td><td class="num">9</td><td class="num">8</td>
+        <td class="num">32.0%</td><td class="num">37.5%</td><td class="num">33.3%</td><td class="num">20.0%</td>
+      </tr>
+      <tr>
+        <td><strong>龜山支會</strong></td>
+        <td class="num">22</td><td class="num">20</td><td class="num">22</td><td class="num">23</td>
+        <td class="num">49.1%</td><td class="num">46.3%</td><td class="num">38.6%</td><td class="num">33.9%</td>
+      </tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>目前可看到的長期訊號</h2>
+  <p class="panel-note">先用五月至八月四個月資料做簡單總覽。</p>
+  <div class="callout">
+    <div><span>整體最高平均出席率</span><strong>六月 49.7%</strong></div>
+    <div><span>八月平均出席率</span><strong>36.9%</strong></div>
+    <div><span>五月→八月新成員總數</span><strong>93 → 97</strong></div>
+  </div>
+</section>
+
+<div class="footer">此 Dashboard 為總覽入口；每個月份皆保留獨立 HTML 分頁，方便單獨分享與後續持續新增月份。</div>
+</main>
+
+<script>
+const months = ["五月", "六月", "七月", "八月"];
+const members = [93, 99, 98, 97];
+const avgAttendance = [41.0, 49.2, 44.2, 35.8];
+const rates = [44.1, 49.7, 45.2, 36.9];
+
+const common = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{legend:{labels:{usePointStyle:true,boxWidth:12}}},
+  scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:"rgba(102,112,133,.14)"}}}
+};
+
+new Chart(document.getElementById("overallChart"), {
+  type:"line",
+  data:{
+    labels:months,
+    datasets:[
+      {label:"平均每週出席（人）",data:avgAttendance,borderColor:"#c96d1a",backgroundColor:"#c96d1a",borderWidth:3,tension:.25,yAxisID:"y"},
+      {label:"平均出席率（%）",data:rates,borderColor:"#2563eb",backgroundColor:"#2563eb",borderWidth:3,tension:.25,yAxisID:"y1"}
+    ]
+  },
+  options:{
+    ...common,
+    scales:{
+      x:{grid:{display:false}},
+      y:{beginAtZero:true,title:{display:true,text:"平均每週出席（人）"},grid:{color:"rgba(102,112,133,.14)"}},
+      y1:{beginAtZero:true,max:70,position:"right",title:{display:true,text:"平均出席率（%）"},grid:{drawOnChartArea:false}}
+    }
+  }
+});
+
+new Chart(document.getElementById("memberChart"), {
+  type:"bar",
+  data:{labels:months,datasets:[{label:"一年內新成員數",data:members,backgroundColor:"#c96d1a"}]},
+  options:{...common,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,suggestedMin:80,suggestedMax:105}}}
+});
+
+new Chart(document.getElementById("rateChart"), {
+  type:"line",
+  data:{labels:months,datasets:[{label:"平均出席率",data:rates,borderColor:"#2563eb",backgroundColor:"#2563eb",borderWidth:3,tension:.25,pointRadius:5}]},
+  options:{...common,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,max:70,ticks:{callback:v=>v+"%"}}}}
+});
+</script>
+</body>
+</html>
