@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>桃園支聯會｜2026年9月一年內新成員出席報表</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--text:#1f2933;--muted:#667085;--border:#e6e2dc;--accent:#c96d1a;--soft:#fff3e6;--shadow:0 10px 30px rgba(31,41,51,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top left,#fff7ed 0,#f6f5f2 38%,#f4f6f8 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;line-height:1.55}
+.nav{position:sticky;top:0;z-index:99;display:flex;gap:8px;flex-wrap:wrap;padding:10px 16px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);box-shadow:0 4px 18px rgba(31,41,51,.06)}
+.nav a{text-decoration:none;color:#475467;font-weight:700;font-size:13px;padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#fff}
+.nav a.home{background:var(--accent);color:#fff;border-color:var(--accent)}
+.page{max-width:1240px;margin:0 auto;padding:34px 20px 60px}
+.hero,.panel,.unit-card{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
+.hero{padding:30px;background:linear-gradient(135deg,#fff,#fff8ef);margin-bottom:22px}
+.eyebrow{display:inline-block;background:var(--soft);color:#9a4f0a;padding:6px 11px;border-radius:999px;font-size:13px;font-weight:800}
+h1{font-size:clamp(30px,4vw,44px);margin:12px 0 8px;line-height:1.15}
+.subtitle{color:var(--muted);margin:0}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.summary .box{border:1px solid var(--border);background:#fff;border-radius:14px;padding:14px}
+.summary span{display:block;color:var(--muted);font-size:12px}
+.summary strong{display:block;font-size:28px;margin-top:4px}
+.panel{padding:22px;margin-bottom:20px}
+.panel h2{margin:0 0 6px;font-size:24px}
+.panel-note{margin:0 0 16px;color:var(--muted);font-size:13px}
+.chart-wrap{height:360px}
+.unit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:20px}
+.unit-card{padding:18px}
+.unit-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.unit-title h3{margin:0;font-size:21px} .unit-title p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.rate{font-size:28px;font-weight:800;color:var(--accent)}
+.mini-stats{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin:10px 0}
+.mini-chart{height:170px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;background:#f8f5f0;color:#475467;padding:10px 11px;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 11px;border-bottom:1px solid #efede9;white-space:nowrap}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.obs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.obs div{border:1px solid var(--border);border-radius:14px;padding:15px;background:#fffaf4}
+.obs strong{display:block;margin-bottom:4px}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:20px}
+@media(max-width:850px){.summary{grid-template-columns:repeat(2,1fr)}.unit-grid,.obs{grid-template-columns:1fr}}
+@media(max-width:560px){.page{padding:18px 10px 40px}.hero,.panel{padding:17px}.summary{grid-template-columns:1fr 1fr}.chart-wrap{height:300px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="home" href="../index.html">總覽 Dashboard</a>
+  <a href="2026-05.html">五月</a><a href="2026-06.html">六月</a><a href="2026-07.html">七月</a><a href="2026-08.html">八月</a><a href="2026-09.html">九月</a>
+</nav>
+<main class="page">
+<section class="hero">
+  <span class="eyebrow">桃園支聯會｜2026 年 9 月</span>
+  <h1>一年內新成員聖餐聚會出席報表</h1>
+  <p class="subtitle">統計日期：09-06、09-13、09-20、09-27。只計算「1年的成員」及以下；排除「1年1個月」以上。</p>
+  <div class="summary">
+    <div class="box"><span>一年內新成員</span><strong>96</strong></div>
+    <div class="box"><span>平均每週出席</span><strong>39.0</strong></div>
+    <div class="box"><span>平均出席率</span><strong>40.6%</strong></div>
+    <div class="box"><span>八月 → 九月</span><strong>36.9% → 40.6%</strong></div>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>九月支聯會每週出席趨勢</h2>
+  <p class="panel-note">六個支會合計每週出席人數：41, 37, 40, 38。</p>
+  <div class="chart-wrap"><canvas id="overviewChart"></canvas></div>
+</section>
+
+<div class="unit-grid">
+
+    <section class="unit-card">
+      <div class="unit-title">
+        <div><h3>中壢支會</h3><p>16 位一年內新成員</p></div>
+        <div class="rate">18.8%</div>
+      </div>
+      <div class="mini-stats">
+        <span>平均每週 <strong>3.0</strong> 人</span>
+        <span>九月四週：3, 2, 4, 3</span>
+      </div>
+      <div class="mini-chart"><canvas id="中壢支會-chart"></canvas></div>
+    </section>
+    
+    <section class="unit-card">
+      <div class="unit-title">
+        <div><h3>八德支會</h3><p>21 位一年內新成員</p></div>
+        <div class="rate">47.6%</div>
+      </div>
+      <div class="mini-stats">
+        <span>平均每週 <strong>10.0</strong> 人</span>
+        <span>九月四週：14, 9, 8, 9</span>
+      </div>
+      <div class="mini-chart"><canvas id="八德支會-chart"></canvas></div>
+    </section>
+    
+    <section class="unit-card">
+      <div class="unit-title">
+        <div><h3>桃園支會</h3><p>16 位一年內新成員</p></div>
+        <div class="rate">59.4%</div>
+      </div>
+      <div class="mini-stats">
+        <span>平均每週 <strong>9.5</strong> 人</span>
+        <span>九月四週：8, 9, 11, 10</span>
+      </div>
+      <div class="mini-chart"><canvas id="桃園支會-chart"></canvas></div>
+    </section>
+    
+    <section class="unit-card">
+      <div class="unit-title">
+        <div><h3>蘆竹支會</h3><p>13 位一年內新成員</p></div>
+        <div class="rate">55.8%</div>
+      </div>
+      <div class="mini-stats">
+        <span>平均每週 <strong>7.2</strong> 人</span>
+        <span>九月四週：8, 8, 7, 6</span>
+      </div>
+      <div class="mini-chart"><canvas id="蘆竹支會-chart"></canvas></div>
+    </section>
+    
+    <section class="unit-card">
+      <div class="unit-title">
+        <div><h3>龍潭支會</h3><p>7 位一年內新成員</p></div>
+        <div class="rate">28.6%</div>
+      </div>
+      <div class="mini-stats">
+        <span>平均每週 <strong>2.0</strong> 人</span>
+        <span>九月四週：2, 1, 2, 3</span>
+      </div>
+      <div class="mini-chart"><canvas id="龍潭支會-chart"></canvas></div>
+    </section>
+    
+    <section class="unit-card">
+      <div class="unit-title">
+        <div><h3>龜山支會</h3><p>23 位一年內新成員</p></div>
+        <div class="rate">31.5%</div>
+      </div>
+      <div class="mini-stats">
+        <span>平均每週 <strong>7.2</strong> 人</span>
+        <span>九月四週：6, 8, 8, 7</span>
+      </div>
+      <div class="mini-chart"><canvas id="龜山支會-chart"></canvas></div>
+    </section>
+    
+</div>
+
+<section class="panel">
+  <h2>九月摘要與八月比較</h2>
+  <p class="panel-note">平均出席率 = 平均每週出席 ÷ 當月一年內新成員數。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>支會</th><th class="num">九月人數</th><th class="num">平均每週</th><th class="num">九月出席率</th><th class="num">人數變化</th><th class="num">平均出席變化</th><th class="num">出席率變化</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>中壢支會</strong></td>
+        <td class="num">16</td>
+        <td class="num">3.0</td>
+        <td class="num">18.8%</td>
+        <td class="num">17 → 16 (-1)</td>
+        <td class="num">4.0 → 3.0 (-1.0)</td>
+        <td class="num">23.5% → 18.8% (-4.8pp)</td>
+      </tr>
+      <tr>
+        <td><strong>八德支會</strong></td>
+        <td class="num">21</td>
+        <td class="num">10.0</td>
+        <td class="num">47.6%</td>
+        <td class="num">21 → 21 (+0)</td>
+        <td class="num">12.0 → 10.0 (-2.0)</td>
+        <td class="num">57.1% → 47.6% (-9.5pp)</td>
+      </tr>
+      <tr>
+        <td><strong>桃園支會</strong></td>
+        <td class="num">16</td>
+        <td class="num">9.5</td>
+        <td class="num">59.4%</td>
+        <td class="num">15 → 16 (+1)</td>
+        <td class="num">7.4 → 9.5 (+2.1)</td>
+        <td class="num">49.3% → 59.4% (+10.1pp)</td>
+      </tr>
+      <tr>
+        <td><strong>蘆竹支會</strong></td>
+        <td class="num">13</td>
+        <td class="num">7.2</td>
+        <td class="num">55.8%</td>
+        <td class="num">13 → 13 (+0)</td>
+        <td class="num">3.0 → 7.2 (+4.2)</td>
+        <td class="num">23.1% → 55.8% (+32.7pp)</td>
+      </tr>
+      <tr>
+        <td><strong>龍潭支會</strong></td>
+        <td class="num">7</td>
+        <td class="num">2.0</td>
+        <td class="num">28.6%</td>
+        <td class="num">8 → 7 (-1)</td>
+        <td class="num">1.6 → 2.0 (+0.4)</td>
+        <td class="num">20.0% → 28.6% (+8.6pp)</td>
+      </tr>
+      <tr>
+        <td><strong>龜山支會</strong></td>
+        <td class="num">23</td>
+        <td class="num">7.2</td>
+        <td class="num">31.5%</td>
+        <td class="num">23 → 23 (+0)</td>
+        <td class="num">7.8 → 7.2 (-0.5)</td>
+        <td class="num">33.9% → 31.5% (-2.4pp)</td>
+      </tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>九月觀察</h2>
+  <div class="obs">
+    <div><strong>整體回升</strong>八月平均每週 35.8 人、36.9%；九月為 39.0 人、40.6%，增加約 3.7 個百分點。</div>
+    <div><strong>桃園支會</strong>九月平均出席率 59.4%，較八月 49.3% 增加約 10.1 個百分點。</div>
+    <div><strong>蘆竹支會</strong>九月平均出席率 55.8%，較八月 23.1% 明顯回升。</div>
+    <div><strong>中壢支會</strong>九月平均出席率 18.8%，較八月 23.5% 再下降，四週平均每週 3.0 人。</div>
+  </div>
+</section>
+
+<div class="footer">本報表只呈現客觀出席統計，不對個別成員做關懷優先度判斷。</div>
+</main>
+<script>
+const labels=["09-06", "09-13", "09-20", "09-27"];
+const wardData={"中壢支會": [3, 2, 4, 3], "八德支會": [14, 9, 8, 9], "桃園支會": [8, 9, 11, 10], "蘆竹支會": [8, 8, 7, 6], "龍潭支會": [2, 1, 2, 3], "龜山支會": [6, 8, 8, 7]};
+const totals=[41, 37, 40, 38];
+const palette=["#c96d1a","#2563eb","#059669","#7c3aed","#dc2626","#0891b2"];
+new Chart(document.getElementById("overviewChart"),{
+  type:"line",
+  data:{labels,datasets:[
+    ...Object.entries(wardData).map(([label,data],i)=>({label,data,borderColor:palette[i],backgroundColor:palette[i],borderWidth:2,tension:.25})),
+    {label:"支聯會總計",data:totals,borderColor:"#111827",backgroundColor:"#111827",borderWidth:3,borderDash:[6,5],tension:.2}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{usePointStyle:true,boxWidth:10}}},scales:{y:{beginAtZero:true},x:{grid:{display:false}}}}
+});
+Object.entries(wardData).forEach(([ward,data],i)=>{
+  const id=ward+"-chart";
+  const el=document.getElementById(id);
+  if(!el) return;
+  new Chart(el,{type:"line",data:{labels,datasets:[{data,borderColor:palette[i],backgroundColor:palette[i],borderWidth:2.5,tension:.25,pointRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{precision:0}},x:{grid:{display:false}}}}
+  });
+});
+</script>
+</body></html>

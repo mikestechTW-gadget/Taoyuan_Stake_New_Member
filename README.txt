@@ -1,13 +1,7 @@
-桃園支聯會｜一年內新成員出席 Dashboard
+桃園支聯會一年內新成員 Dashboard（更新至 2026 年 9 月）
 
-檔案結構：
-- index.html：總覽首頁
-- months/2026-05.html：五月
-- months/2026-06.html：六月
-- months/2026-07.html：七月
-- months/2026-08.html：八月
+- index.html：五月至九月總覽
+- months/2026-05.html ～ 2026-09.html：各月獨立報表
+- status/2026-08.html：目前既有的個人出席／推薦書／施助／召喚狀態頁
 
-使用方式：
-1. 直接開啟 index.html，即可瀏覽總覽與各月份分頁。
-2. 若上傳到 GitHub Pages，請維持資料夾結構不變。
-3. 圖表使用 Chart.js CDN，因此瀏覽時需要網路連線才能顯示圖表。
+注意：九月個人狀態頁需要最新 PDF 的推薦書、施助、召喚與證實日期資料後才能更新。
